@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: propose
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/propose
+      database: propose
+      auto-index-creation: true
+  docker:
+    compose:
+      lifecycle-management: start_only
+      start:
+        command: up
+      file: docker-compose.yml
+
