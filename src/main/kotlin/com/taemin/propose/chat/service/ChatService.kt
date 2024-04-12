@@ -9,7 +9,6 @@ import com.taemin.propose.chat.repository.ChatRepository
 import com.taemin.propose.user.domain.User
 import com.taemin.propose.user.repository.UserRepository
 import com.taemin.propose.util.ResourceManager
-import org.springframework.cache.annotation.Caching
 import org.springframework.stereotype.Service
 
 private const val EMOTICON_STRING = "이모티콘"
@@ -20,31 +19,31 @@ class ChatService(
     private val chatRepository: ChatRepository,
     private val userRepository: UserRepository
 ) {
-    @Caching
+
     fun getChatCount(): ChatCountResponse {
         return ChatCountResponse(chatRepository.findAll().count())
     }
 
-    @Caching
+
     fun getChatCountByName(name: String): ChatCountByNameResponse {
         return ChatCountByNameResponse(name, chatRepository.findByName(name).size)
     }
 
-    @Caching
+
     fun getChatCountByDate(): List<ChatCountByDateResponse> {
         val chats = chatRepository.findAll()
         val responses = getChatCountByDateResponses(chats)
         return responses.sortedBy { it.date }
     }
 
-    @Caching
+
     fun getChatCountByDateByName(name: String): List<ChatCountByDateResponse> {
         val chats = chatRepository.findByName(name)
         val responses = getChatCountByDateResponses(chats)
         return responses.sortedBy { it.date }
     }
 
-    @Caching
+
     fun getChatMessageRanking(): List<ChatCountByMessageResponse> {
         return chatRepository.findAll().groupBy { it.message }
             .asSequence()
@@ -56,7 +55,6 @@ class ChatService(
             .toList().subList(0, 200)
     }
 
-    @Caching
     fun getChatMessageRankingByName(name: String): List<ChatCountByMessageResponse> {
         return chatRepository.findByName(name).groupBy { it.message }
             .asSequence()

@@ -1,4 +1,4 @@
-package com.taemin.propose.util
+package com.taemin.propose.util.config
 
 import org.springframework.cache.annotation.EnableCaching
 import org.springframework.context.annotation.Configuration

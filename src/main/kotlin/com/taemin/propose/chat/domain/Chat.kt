@@ -16,7 +16,6 @@ private const val NOT_SPLIT_COUNT = 2
 private const val EMOTICON = "이모티콘"
 
 @Document
-//@CompoundIndex(def = "{'name': 1, 'message': 1, 'chatAt': 1}", name = "chat_compound_index", unique = true)
 data class Chat(
     @MongoId(FieldType.OBJECT_ID)
     val id: String? = null,

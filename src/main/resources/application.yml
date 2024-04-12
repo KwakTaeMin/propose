@@ -13,3 +13,7 @@ spring:
         command: up
       file: docker-compose.yml
 
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
