@@ -42,7 +42,7 @@ data class User(
         fun createHyunjoo() : User {
             return User(
                 name = "이현주",
-                nickname = "현주",
+                nickname = "\uD83D\uDC991010235\uD83D\uDC99",
                 birthDay = LocalDate.of(1993,12,3),
                 mbti = MBTIType.ENFP,
                 bloodType = BloodType.B,

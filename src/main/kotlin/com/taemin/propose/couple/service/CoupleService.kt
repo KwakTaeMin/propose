@@ -13,12 +13,11 @@ class CoupleService(
     private val userRepository: UserRepository
 ) {
     fun getCoupleByUserId(userId: String): Couple {
-        val user = userRepository.findById(userId).orElseThrow()
-        return coupleRepository.findByUser(user)
+        return coupleRepository.findByUserId(userId)
     }
 
-    fun initCouple(users: List<User>) {
-        val couples = Couple.of(users, LocalDate.of(2022, 4, 29))
-        coupleRepository.saveAll(couples)
+    fun initCouple(users: List<User>) : Couple {
+        val couple = Couple.of(users, LocalDate.of(2022, 4, 29))
+        return coupleRepository.save(couple)
     }
 }
